@@ -1,40 +1,24 @@
 /*
 Requirements
-Using the global items variable created in items.js, use array.map(), array.reduce(), array.forEach(), 
-and array.filter() to help you through the assignment questions
-
-The answers should be logged out to your console using console.log()
-
-Make sure the output matches the answers below each question
-
-Please comment your code as you walk through your process
+array.reduce()
 
 It is suggested that you write functions that return values, not just functions that call console.log
-
-Publish your project using GitHub Pages
 */
 
 // QUESTION 1
 // Show me how to calculate the average price of all items. Please console.log the average.
 // The average price is $23.63
 
-//Used For...in loop to grab the value from the objects inside the array and 
-//added them up
-total = 0;
-for (const num in items) {
-    total = total += items[num].price;
-};
-totalCents = total * 100;
-avgPrice = totalCents/items.length;
-avgPrice = Math.round(avgPrice);
-avgPrice = avgPrice / 100;
-//And then divided by number of items in the array.
+//Used .map to create array of only prices. Used .reduce to add those prices up
+const prices = items.map(function(item){
+    return item.price;
+});
+const reducer = (first, next) => first + next;
+let total = prices.reduce(reducer);
+//Convert decimal value to cash notation
+avgPrice = (Math.round((total*100)/items.length)/100);
 console.log(`Average price of items is $${avgPrice}`);
 console.log('-----------------------');
-
-
-
-
 
 
 
@@ -101,6 +85,7 @@ const gbpPrice = items.filter(function(item){
 // Engraved Pocket Knife, Personalized Groomsmen Gift, Ring Bearer Gift, Graduation Gift, 4 Knives is made of wood.
 
 console.log('Items made of wood:')
+//Filtering for values of 'wood' in 'materials' keys
 const wooden = items.filter(function(item){
     return (item['materials'].includes('wood'));
  });
@@ -139,6 +124,7 @@ console.log('-----------------------');
 
 
 console.log('Items made of 8+ materials:')
+//filtering for items which have a meterials array 8 entries or longer
 const manyMats = items.filter(function(item){
     return (item['materials'].length >= 8);
  });
@@ -149,6 +135,7 @@ console.log('-----------------------');
 // Show me how to calculate how many items were made by their sellers. Please console.log your answer.
 // 18 were made by their sellers
 
+//filtering for items whose 'who_made' key have a value of 'i_did'
 const selfMade = items.filter(function(item){
     return (item['who_made'] === 'i_did');
  });
