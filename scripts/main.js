@@ -1,10 +1,3 @@
-/*
-Requirements
-array.reduce()
-
-It is suggested that you write functions that return values, not just functions that call console.log
-*/
-
 // QUESTION 1
 // Show me how to calculate the average price of all items. Please console.log the average.
 // The average price is $23.63
