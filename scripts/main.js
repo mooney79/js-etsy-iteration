@@ -30,6 +30,7 @@ avgPrice = Math.round(avgPrice);
 avgPrice = avgPrice / 100;
 //And then divided by number of items in the array.
 console.log(`Average price of items is $${avgPrice}`);
+console.log('-----------------------');
 
 
 
@@ -60,7 +61,7 @@ console.log(`Average price of items is $${avgPrice}`);
 //   ]
 
 
-
+console.log('Items that cost between $14.00(inclusive) and $18.00(exclusive):')
 //Filter the array to only include items at the specified price point
 const giftCost = items.filter(function(item){
    return (item.price < 18.00 && item.price >= 14.00)
@@ -69,8 +70,8 @@ const giftCost = items.filter(function(item){
 const giftList = giftCost.map(function(item){
   return item.title;
 });
-console.log(giftList);
-
+giftList.forEach(element => console.log(element));
+console.log('-----------------------');
 
 
 // QUESTION 3
@@ -79,13 +80,13 @@ console.log(giftList);
 // 1970s Schlitz Malt Liquor Glass Beer Pitcher costs £18
 
 //Filtering by "currency_code" = GBP
-console.log('Items listed in GBP')
+console.log('Items listed in GBP:')
 const gbpPrice = items.filter(function(item){
     return (item['currency_code'] === 'GBP');
  });
  //Logging the elements of that object
- console.log(`${gbpPrice[0].title} costs ${gbpPrice[0].price} ${gbpPrice[0]['currency_code']}`);
- // Cheating a bit here, as I know it is an array of 1.
+ gbpPrice.forEach(element => console.log(`${element.title} costs ${element.price} ${element['currency_code']}`));
+ console.log('-----------------------');
 
 
 // QUESTION 4
@@ -103,10 +104,8 @@ console.log('Items made of wood:')
 const wooden = items.filter(function(item){
     return (item['materials'].includes('wood'));
  });
-for (i = 0; i < wooden.length; i++){
-    console.log(wooden[i].title)
-};
-
+wooden.forEach(element => console.log(element.title));
+console.log('-----------------------');
 
 
 
@@ -143,9 +142,8 @@ console.log('Items made of 8+ materials:')
 const manyMats = items.filter(function(item){
     return (item['materials'].length >= 8);
  });
-for (i = 0; i < manyMats.length; i++){
-    console.log(manyMats[i].title)
-};
+manyMats.forEach(element => console.log(element.title));
+console.log('-----------------------');
 
 // QUESTION 6
 // Show me how to calculate how many items were made by their sellers. Please console.log your answer.
